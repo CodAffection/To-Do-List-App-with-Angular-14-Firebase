@@ -1,0 +1,30 @@
+<div class="card shadow-lg mt-5">
+    <div class="card-header text-center py-4 border-0">
+        <h1 class="display-6 fw-bold">To Do List</h1>
+    </div>
+    <div class="card-body p-4">
+
+        <ul class="list-group">
+            <li class="list-group-item mb-2 border py-0 rounded-3">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0 py-3 shadow-none" placeholder="Title goes here"
+                        #titleInput>
+                    <button class="btn text-success border-0" (click)="onClick(titleInput)">
+                        <i class="fa-solid fa-circle-plus fa-xl"></i>
+                    </button>
+                </div>
+            </li>
+            <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of todos">
+                <span>
+                    <i class="text-success" (click)="onStatusChange(item.id,!item.isDone)"
+                        [ngClass]="item.isDone?'fa-solid fa-circle-check':'fa-regular fa-circle'"></i>
+                    {{item.title}}
+                    <span class="float-end text-secondary"
+                    (click)="onDelete(item.id)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
